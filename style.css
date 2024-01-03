@@ -93,20 +93,52 @@ backdrop-filter: blur(1px);
 }
 
 .card-container{
-    margin: 20px 0px; 
     grid-column: 1/-1;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 20px;
+    background-color: whitesmoke
     
 }
 
 .cardstyle{
     width: 300px;
     height: 150px;
-    border: 1px solid red;
     padding: 20px;
     border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    align-items: center;
+}
+
+.cardstyle>p:first-child{
+    font-size: 30px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.cardstyle>p{
+    margin:0;
+}
+
+.cardstyle.read{
+    border-left: 10px solid green;
+}
+
+.cardstyle.not-read{
+    border-left: 10px solid red;
+}
+
+.btn-read{
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
 }
 
