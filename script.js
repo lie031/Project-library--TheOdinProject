@@ -16,8 +16,16 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function saveLibrary(library){
-    localStorage.setItem('library',JSON.stringify(library));
+function saveLibrary(library) {
+    const serializedLibrary = library.map(book => {
+        return {
+            title: book.title,
+            author: book.author,
+            pages: book.pages,
+            read: book.read
+        };
+    });
+    localStorage.setItem('library', JSON.stringify(serializedLibrary));
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -26,18 +34,17 @@ function addBookToLibrary(title, author, pages, read) {
     saveLibrary(myLibrary);
 }
 
-window.addEventListener('load',()=>{
+window.addEventListener('load', () => {
     const storedLibrary = localStorage.getItem('library');
-    if(storedLibrary){
-        
-        const myLibrary= JSON.parse(storedLibrary);
+    if (storedLibrary) {
+        const serializedLibrary = JSON.parse(storedLibrary);
+        const myLibrary = serializedLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
         render(myLibrary);
         console.log('library loaded');
+    } else {
+        console.log('no library found in local storage');
     }
-    else{
-        console.log('not library found in local storage');
-    }
-})
+});
 
 addBtn.addEventListener('click', (event) => {
     event.preventDefault();
