@@ -7,7 +7,7 @@ const newBook = document.querySelector('.add');
 const form = document.querySelector('.form');
 const modal = document.querySelector('#modal');
 const cardContainer = document.querySelector('.card-container');
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -38,8 +38,8 @@ window.addEventListener('load', () => {
     const storedLibrary = localStorage.getItem('library');
     if (storedLibrary) {
         const serializedLibrary = JSON.parse(storedLibrary);
-        const loadedLibrary = serializedLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
-        render(loadedLibrary);
+        myLibrary = serializedLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
+        render(myLibrary);
         console.log('library loaded');
     } else {
         console.log('no library found in local storage');
