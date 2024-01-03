@@ -29,6 +29,7 @@ function addBookToLibrary(title, author, pages, read) {
 window.addEventListener('load',()=>{
     const storedLibrary = localStorage.getItem('library');
     if(storedLibrary){
+        
         const myLibrary= JSON.parse(storedLibrary);
         render(myLibrary);
         console.log('library loaded');
