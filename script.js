@@ -38,8 +38,8 @@ window.addEventListener('load', () => {
     const storedLibrary = localStorage.getItem('library');
     if (storedLibrary) {
         const serializedLibrary = JSON.parse(storedLibrary);
-        const myLibrary = serializedLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
-        render(myLibrary);
+        const loadedLibrary = serializedLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
+        render(loadedLibrary);
         console.log('library loaded');
     } else {
         console.log('no library found in local storage');
