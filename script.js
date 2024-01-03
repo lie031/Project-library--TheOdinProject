@@ -31,6 +31,10 @@ window.addEventListener('load',()=>{
     if(storedLibrary){
         myLibrary= JSON.parse(storedLibrary);
         render(myLibrary);
+        console.log('library loaded');
+    }
+    else{
+        console.log('not library found in local storage');
     }
 })
 
