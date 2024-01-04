@@ -15,9 +15,8 @@ body {
     align-items: center;
     justify-content: space-between;
     grid-column: span 3;
-    color: rgb(108, 108, 240);
     background-color: #f8f8f8;
-    padding: 0 30px;
+    padding: 0 150px;
 }
 
 .add {
@@ -133,12 +132,18 @@ backdrop-filter: blur(1px);
     border-left: 10px solid red;
 }
 
+.btn-container{
+    display: flex;
+    gap: 10px;
+}
+
 .btn-read{
-    width: 150px;
+    width: 120px;
     padding: 10px;
     border-radius: 5px;
     border: none;
     font-size: 16px;
     font-weight: 700;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 

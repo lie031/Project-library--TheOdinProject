@@ -86,15 +86,22 @@ function render(arr){
         authorTemp.textContent = "Author: " + element.author;
         const pagesTemp = document.createElement('p');
         pagesTemp.textContent = "Pages:" + element.pages;
+        const btnContainer = document.createElement('div');
+        btnContainer.classList.add('btn-container');
         const readTemp = document.createElement('button');
         readTemp.classList.add('btn-read');
         readTemp.textContent = element.read? 'Read' : 'Not read';
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.classList.add('btn-read');
         card.classList.add('cardstyle');
         card.classList.add(element.read?'read':'not-read');
         card.appendChild(titleTemp);
         card.appendChild(authorTemp);
         card.appendChild(pagesTemp);
-        card.appendChild(readTemp);
+        btnContainer.appendChild(readTemp);
+        btnContainer.appendChild(deleteBtn);
+        card.appendChild(btnContainer);
         cardContainer.appendChild(card);
 
         readTemp.addEventListener('click',()=>{
@@ -109,5 +116,17 @@ function render(arr){
                 readTemp.textContent = 'Read';
             }
         })
+
+        deleteBtn.addEventListener('click', () => {
+            
+            const index = myLibrary.indexOf(element);
+        
+            if (index !== -1) {
+                myLibrary.splice(index, 1);
+                saveLibrary(myLibrary);
+                render(myLibrary);
+            }
+        });
+
     });   
 }
