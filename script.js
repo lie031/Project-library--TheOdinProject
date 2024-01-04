@@ -108,7 +108,7 @@ function render(arr){
             if(card.classList.contains('read')){
                 card.classList.remove('read');
                 card.classList.add('not-read');
-                readTemp.textContent = 'Not read'
+                readTemp.textContent = 'Not read';
             }
             else{
                 card.classList.remove('not-read');
@@ -117,8 +117,14 @@ function render(arr){
             }
         })
 
+        readTemp.addEventListener('click', () => {
+            element.read = !element.read;
+            saveLibrary(myLibrary);
+            render(myLibrary);
+        });
+
         deleteBtn.addEventListener('click', () => {
-            
+
             const index = myLibrary.indexOf(element);
         
             if (index !== -1) {
